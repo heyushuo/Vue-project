@@ -1,7 +1,7 @@
 <template>
-	<div class="content">
+	<div class="content mt30">
 		<div class="header">
-	    	<h2><img src="../assets/img/headimg.png" alt=""/></h2>
+	    	<h2><img src="../../static/assets/img/headimg.png" alt=""/></h2>
 	        <div class="user-box">
 	        	<router-link to="/user-login">登录</router-link>
 	        	<router-link to="/user-reg">注册</router-link>
@@ -65,5 +65,5 @@
 	}	
 </script>
 <style scoped>
-	@import '../assets/css/mydoc.css'
+	@import '../../static/assets/css/mydoc.css'
 </style>

@@ -1,41 +1,52 @@
 <template>
-	<div id="app">
-		<NavView v-show="headShow"></NavView>
-		<loading v-show="loading"></loading>
-		<keep-alive>
-			<router-view></router-view>
-		</keep-alive>
-		<!--<HomeView></HomeView>需要替换为router-view-->
+  <div>
+  	<NavView v-if="true"></NavView>
+  	<router-view></router-view>
+  	<!--<HomeView></HomeView>-->
 		<FooterView></FooterView>
-	</div>
+  </div>
 </template>
+
 <script>
-	import NavView from './components/Nav.vue'
-//	import HomeView from './components/Home.vue'
-	import FooterView from './components/Footer.vue'
-	import {mapGetters,mapActives} from 'vuex'
-	export default{
-		computed:mapGetters([
-			'headShow',
-			'loading'
-		]),
+import NavView from './components/Nav.vue'
+import HomeView from './components/Home.vue'
+import FooterView from './components/Footer.vue'
+import {mapGetters,mapActions} from 'vuex'
+export default {
+//	computed:mapGetters([
+//		'headerShow'
+//	]),
+	components:{
+			NavView,
+			HomeView,
+			FooterView
+		},
 		watch:{
-			'$route'(to,form){
-				if(to.path=="/userinfo"){
-					//发送到actions,js里接受数据
-					this.$store.dispatch('hideHeader');	
-				}else{
-					this.$store.dispatch('showHeader');	
+			$route(to,from){
+			console.log(to.path+"-----"+from.path);
+				if(to.path=='/user-info'){
+					//这个store来自main.js,main.js的store来自store下的index,js,这里需要导出store
+						this.$store.dispath('showHeader')
 				}
 			}
 		},
-		components:{
-				NavView,
-//				HomeView,
-				FooterView
-			}	
-	}
+		mounted(){
+		},
+		methods:{
+			
+		}
+}
 </script>
-<style scoped>
-	@import './assets/css/index.css';
+
+<style>
+	@import url("../static/assets/css/base.css");
+	@import url("../static/assets/css/index.css");
+/*#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}*/
 </style>

@@ -1,33 +1,15 @@
-import Home from '../components/Home.vue'
-import Follow from '../components/Follow.vue'
-import Column from '../components/Column.vue'
-import UserInfo from '../components/UserInfo.vue'
-import Article from '../components/Article.vue'
-export default[
-	//首页默认打开
-	{
-		path:"/",
-		redirect:"/home"
-	},
-	 {
-      path: '/home',
-      component: Home,
-   },
+import Vue from 'vue'
+import Router from 'vue-router'
+import Hello from '@/components/Hello'
+
+Vue.use(Router)
+
+export default new Router({
+  routes: [
     {
-      path: '/follow',
-      component: Follow
-    },
-     {
-      path: '/column',
-      component: Column
-     },
-     {
-     	path:'/article/:id',
-     	component: Article
-     }
-     ,
-     {
-      path: '/userinfo',
-      component: UserInfo
-     }
-]
+      path: '/',
+      name: 'Hello',
+      component: Hello
+    }
+  ]
+})
