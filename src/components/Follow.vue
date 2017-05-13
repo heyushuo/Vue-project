@@ -3,52 +3,10 @@
 		<div class="content mt30">
 		    <div class="newsList">
 		    	<ul>
-		            <li>
+		            <li v-for="(item,index) in arrList">
 		            	<a href="conText.html">
-		                    <h2>关住页面</h2>
-		                    <p>还可以降低首付款健还可以降低首付款健身房还可以降低首付款健身房身房还可以降低首付款健还可以降低首付款健身房身房</p>
-		                </a>
-		            </li>
-		            <li>
-		            	<a href="conText.html">
-		                    <h2>关注页面</h2>
-		                    <p>还可以降低首付款健还可以降低首付款健身房还可以降低首付款健身房身房还可以降低首付款健还可以降低首付款健身房身房</p>
-		                </a>
-		            </li>
-		            <li>
-		            	<a href="conText.html">
-		                    <h2>还可以降低首付款健身房还可以降低首付款健身房还可以降低首付款健身房333</h2>
-		                    <p>还可以降低首付款健还可以降低首付款健身房还可以降低首付款健身房身房还可以降低首付款健还可以降低首付款健身房身房</p>
-		                </a>
-		            </li>
-		            <li>
-		            	<a href="conText.html">
-		                    <h2>还可以降低首付款健身房还可以降低首付款健身房还可以降低首付款健身房333</h2>
-		                    <p>还可以降低首付款健还可以降低首付款健身房还可以降低首付款健身房身房还可以降低首付款健还可以降低首付款健身房身房</p>
-		                </a>
-		            </li>
-		            <li>
-		            	<a href="conText.html">
-		                    <h2>还可以降低首付款健身房还可以降低首付款健身房还可以降低首付款健身房333</h2>
-		                    <p>还可以降低首付款健还可以降低首付款健身房还可以降低首付款健身房身房还可以降低首付款健还可以降低首付款健身房身房</p>
-		                </a>
-		            </li>
-		            <li>
-		            	<a href="conText.html">
-		                    <h2>还可以降低首付款健身房还可以降低首付款健身房还可以降低首付款健身房333</h2>
-		                    <p>还可以降低首付款健还可以降低首付款健身房还可以降低首付款健身房身房还可以降低首付款健还可以降低首付款健身房身房</p>
-		                </a>
-		            </li>
-		            <li>
-		            	<a href="conText.html">
-		                    <h2>还可以降低首付款健身房还可以降低首付款健身房还可以降低首付款健身房333</h2>
-		                    <p>还可以降低首付款健还可以降低首付款健身房还可以降低首付款健身房身房还可以降低首付款健还可以降低首付款健身房身房</p>
-		                </a>
-		            </li>
-		            <li>
-		            	<a href="conText.html">
-		                    <h2>还可以降低首付款健身房还可以降低首付款健身房还可以降低首付款健身房333</h2>
-		                    <p>还可以降低首付款健还可以降低首付款健身房还可以降低首付款健身房身房还可以降低首付款健还可以降低首付款健身房身房</p>
+		                    <h2>{{item.title}}</h2>
+		                    <p>{{item.detail}}</p>
 		                </a>
 		            </li>
 		        </ul>
@@ -58,6 +16,27 @@
 </template>
 
 <script>
+	export default{
+		mounted(){
+			this.fetchData();
+		},
+		data(){
+			return {
+				arrList:[]
+			}
+		},
+		methods:{
+			fetchData(){
+				var _this=this;
+				this.$http.get("static/data/follow.data").then((res)=>{
+					console.log(res)
+					_this.arrList=res.data;
+				}).catch(function(){
+					alert("error")
+				})
+			}
+		}
+	}
 </script>
 
 <style scoped="scoped">

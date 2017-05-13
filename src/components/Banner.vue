@@ -29,8 +29,29 @@
 		    </div>		
 	</div>
 </template>
-
 <script>
+	export default{
+	mounted(){
+		//数据加载完后调用,相当于ready()
+		this.slider();
+	},
+	methods:{
+		slider(){
+			//必须放到$(function(){})里边
+				$(function(){
+					var mySwipe=Swipe($('.banner')[0],{
+						auto:2000,
+						continuous:true,
+						stopPropation:true,
+						callback:function (index,element){
+							$('.banner ol li').removeClass('active');
+							$('.banner ol li').eq(index).addClass('active');
+						}
+					});
+				})
+		}
+	}
+}
 </script>
 
 <style>
